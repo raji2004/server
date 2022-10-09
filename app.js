@@ -14,7 +14,7 @@ async function mainMail(name, email, subject, message) {
     service: "gmail",
     auth: {
       user: process.env.GMAIL_USER,
-      password: process.env.pass,
+      pass: process.env.pass,
     },
   });
   const mailOption = {
