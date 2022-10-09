@@ -12,8 +12,10 @@ app.use(express.static(path.join(__dirname, "public")));
 async function mainMail(name, email, subject, message) {
   const transporter = await nodeMail.createTransport({
     service: "gmail",
-   providerauth: {user: 'kingraj1344@@gmail.com'}, // user -> important
-    pass: "yanykrliphamrdlt"// pass -> important (do not use password)
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.pass,
+    },
 });
   });
   const mailOption = {
