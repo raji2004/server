@@ -16,6 +16,7 @@ async function mainMail(name, email, subject, message) {
       user: process.env.GMAIL_USER,
       pass: process.env.pass,
     },
+});
   });
   const mailOption = {
     from: process.env.GMAIL_USER,
