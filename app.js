@@ -21,7 +21,7 @@ async function mainMail(name, email, subject, message) {
     from: process.env.GMAIL_USER,
     to: email,
     subject: subject,
-    html: `You got a message from t 
+    html: `You got a message from 
     Email : ${email} <br>
     Name: ${name} <br>
     Message: ${message}`,
