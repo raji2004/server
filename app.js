@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const nodeMail = require("nodemailer");
+const { contact } = require("./contact");
 
 const app = express();
 
@@ -33,10 +34,6 @@ async function mainMail(name, email, subject, message) {
   }
 }
 
-app.get("/", (req, res) => {
-  res.render(contact.html);
-});
-
 app.post("/", async (req, res, next) => {
   const { yourname, youremail, yoursubject, yourmessage } = req.body;
   try {
@@ -47,6 +44,9 @@ app.post("/", async (req, res, next) => {
     console.log(error);
     res.send("Message Could not be Sent");
   }
+});
+app.get("/", (req, res) => {
+  res.send("<h1>hello</h1>");
 });
 
 app.listen(process.env.port, () => console.log("Server is running!"));
