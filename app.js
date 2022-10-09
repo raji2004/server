@@ -16,16 +16,15 @@ async function mainMail(name, email, subject, message) {
       user: process.env.GMAIL_USER,
       pass: process.env.pass,
     },
-});
   });
   const mailOption = {
     from: process.env.GMAIL_USER,
     to: email,
     subject: subject,
     html: `You got a message from 
-    Email : ${email} <br>
-    Name: ${name} <br>
-    Message: ${message}`,
+      Email : ${email} <br>
+      Name: ${name} <br>
+      Message: ${message}`,
   };
   try {
     await transporter.sendMail(mailOption);
