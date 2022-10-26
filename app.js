@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const nodeMail = require("nodemailer");
-const { contact } = require("./contact");
+// const { contact } = require("./contact");
 
 const app = express();
 
@@ -11,17 +11,19 @@ app.use(express.static(path.join(__dirname, "public")));
 
 async function mainMail(name, email, subject, message) {
   const transporter = await nodeMail.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.pass,
+      user: process.env.USER_EMAIL,
+      pass: process.env.PASS,
     },
   });
   const mailOption = {
     from: process.env.GMAIL_USER,
     to: email,
     subject: subject,
-    html: `You got a message from t 
+    html: `You got a message from 
     Email : ${email} <br>
     Name: ${name} <br>
     Message: ${message}`,
