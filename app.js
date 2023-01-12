@@ -9,7 +9,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-async function mainMail(name, email, subject, message) {
+async function mainMail(name, email, number, message) {
   const transporter = await nodeMail.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -22,7 +22,7 @@ async function mainMail(name, email, subject, message) {
   const mailOption = {
     from: process.env.GMAIL_USER,
     to: email,
-    subject: subject,
+    subject: number,
     html: `You got a message from 
     Email : ${email} <br>
     Name: ${name} <br>
@@ -37,9 +37,9 @@ async function mainMail(name, email, subject, message) {
 }
 
 app.post("/", async (req, res, next) => {
-  const { yourname, youremail, yoursubject, yourmessage } = req.body;
+  const { name, email, number, message } = req.body;
   try {
-    await mainMail(yourname, youremail, yoursubject, yourmessage);
+    await mainMail(name, email, number, message);
 
     res.send("Message Successfully Sent!");
   } catch (error) {
