@@ -1,14 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
 const nodeMail = require("nodemailer");
 // const { contact } = require("./contact");
 const User = require('./user')
 
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 
 async function mainMail(name, email, number,) {
   const transporter = await nodeMail.createTransport({
@@ -37,21 +37,33 @@ async function mainMail(name, email, number,) {
   }
 }
 
-app.post("/", async (req, res, next) => {
-  const { fname, lname,email,number } = req.body;
+app.post("/", async (req,res) => {
+  const { fname, lname, email, number } = req.body;
   try {
-    const user = await new User({FirstName:fname,LastName:lname,Phone_Number:number,Email:email}).save()
+    console.log(req.body)
+    const user = await new User({ FirstName: fname, LastName: lname, Phone_Number: number, Email: email }).save()
     const name = fname + " " + lname;
     await mainMail(name, email, number);
 
     res.send(`user ${user.FirstName} has signed up successfully`);
   } catch (error) {
     console.log(error);
-    res.send("Message Could not be Sent");
+    res.status(400).json({message:error.message});
   }
 });
 app.get("/", (req, res) => {
   res.send("<h1>hello talo edit</h1>");
 });
+mongoose
+  .connect(process.env.Database_URL, {
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("database connected successfully");
+  })
+  .catch((e) => {
+    console.log(`error connecting to database: ${e}`);
+  });
 
-app.listen(process.env.port, () => console.log("Server is running!"));
+
+app.listen(3000, () => console.log("Server is running!"));
