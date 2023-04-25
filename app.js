@@ -3,13 +3,14 @@ const express = require("express");
 const path = require("path");
 const nodeMail = require("nodemailer");
 // const { contact } = require("./contact");
+const User = require('./user')
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-async function mainMail(name, email, number, message) {
+async function mainMail(name, email, number,) {
   const transporter = await nodeMail.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -20,13 +21,13 @@ async function mainMail(name, email, number, message) {
     },
   });
   const mailOption = {
-    from: process.env.GMAIL_USER,
+    from: process.env.USER_EMAIL,
     to: email,
     subject: number,
     html: `You got a message from 
     Email : ${email} <br>
     Name: ${name} <br>
-    Message: ${message}`,
+    `,
   };
   try {
     await transporter.sendMail(mailOption);
@@ -37,18 +38,20 @@ async function mainMail(name, email, number, message) {
 }
 
 app.post("/", async (req, res, next) => {
-  const { name, email, number, message } = req.body;
+  const { fname, lname,email,number } = req.body;
   try {
-    await mainMail(name, email, number, message);
+    const user = await new User({FirstName:fname,LastName:lname,Phone_Number:number,Email:email}).save()
+    const name = fname + " " + lname;
+    await mainMail(name, email, number);
 
-    res.send("Message Successfully Sent!");
+    res.send(`user ${user.FirstName} has signed up successfully`);
   } catch (error) {
     console.log(error);
     res.send("Message Could not be Sent");
   }
 });
 app.get("/", (req, res) => {
-  res.send("<h1>hello</h1>");
+  res.send("<h1>hello talo edit</h1>");
 });
 
 app.listen(process.env.port, () => console.log("Server is running!"));
