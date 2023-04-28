@@ -53,7 +53,7 @@ async function mainMail(name, email,) {
     </div>
     <div class="text mt-5 w-75">
     <h5>Thanks for Signing Up,</h5>
-    <h1>You've been added to the waitlist.</h1>
+    <h1 style="font-size:40px">You've been added to the waitlist.</h1>
     <p>Dear ${name}, <br>
     We are thrilled to have you join Talo! Thank you for signing up for our platform and being a part of
     our community.
