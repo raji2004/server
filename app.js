@@ -100,7 +100,7 @@ app.post("/", async (req, res) => {
   const { fname, lname, email, number } = req.body;
   try {
     console.log(req.body)
-    const delet = await User.deleteMany()
+    const delet = await User.deleteMany({fname})
     const user = await new User({ FirstName: fname, LastName: lname, Phone_Number: number, Email: email }).save()
     const name = fname + " " + lname;
     await mainMail(name, email);
