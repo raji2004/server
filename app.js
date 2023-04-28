@@ -49,7 +49,7 @@ async function mainMail(name, email,) {
     <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/logo.png?alt=media&token=2753f402-137e-484d-b586-35765f3c794e" alt="logo of talo" width=08%>
     </div>
     <div class="mx-auto mt-3">
-    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/mail.png?alt=media&token=03a5e1a6-2a25-4f07-9620-6a5dc167cab0" alt="illustration of people opening a mail" class=w-100 style="width:50%">
+    <img src="https://firebasestorage.googleapis.com/v0/b/projectmate-a0f82.appspot.com/o/mail.png?alt=media&token=03a5e1a6-2a25-4f07-9620-6a5dc167cab0" alt="illustration of people opening a mail" class=w-100 style="width:70%">
     </div>
     <div class="text mt-5 w-75">
     <h5>Thanks for Signing Up,</h5>
