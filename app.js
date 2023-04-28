@@ -42,7 +42,7 @@ async function mainMail(name, email,) {
     <title>Talo</title>
     <style>@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,600&display=swap');body{font-family:'Raleway',sans-serif;background-image:url('./img/bg.png');background-position:center;background-size:cover;margin:auto;scroll-behavior:smooth;color:#0b0d17}h1{margin-top:15px;margin-bottom:30px;font-size:4em;margin-left:25px;font-weight:700;color:#0f4e2f}h5{font-weight:630}.text p{font-weight:500}.text{margin-left:15px}hr{background-color:#fff;color:#fff;height:1.2px}</style>
     </head>
-    <body>
+    <body style="max-width:600px;">
     <section class="container m-5">
     <div class="container bg-light p-3 m-auto rounded w-75">
     <div class=rounded>
