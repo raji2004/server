@@ -188,12 +188,13 @@ async function mainMail(name, email,) {
 app.post("/", async (req, res) => {
   const { fname, lname, email, number } = req.body;
   try {
-    console.log(req.body)
-    const user = await new User({ FirstName: fname, LastName: lname, Phone_Number: number, Email: email }).save()
-    const name = fname + " " + lname;
-    await mainMail(name, email);
+    // console.log(req.body)
+    // const user = await new User({ FirstName: fname, LastName: lname, Phone_Number: number, Email: email }).save()
+    // const name = fname + " " + lname;
+    // await mainMail(name, email);
+    const user = await User.deleteMany()
 
-    res.send(`user ${user.FirstName} has signed up successfully`);
+    res.send(`user ${user} has signed up successfully`);
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error.message });
