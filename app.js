@@ -108,6 +108,7 @@ async function mainMail(name, email,) {
     <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://viewstripo.email" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#2E3440;font-size:14px"><img class="adapt-img" src="https://gaojfe.stripocdn.email/content/guids/aa914a69-689d-482a-b84f-4252fd506eb8/images/mail.png" alt="Secret mail" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="560" title="Secret mail"></a></td>
     </tr>
     <tr>
+    <td align="left" style="padding:0;Margin:0;padding-top:10px"><h3 style="Margin:0;line-height:20px;mso-line-height-rule:exactly;font-family:roboto,'helvetica neue',helvetica,arial,sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#2E3440">Hello ${name}</h3></td>
     <td align="left" style="padding:0;Margin:0;padding-top:10px"><h3 style="Margin:0;line-height:20px;mso-line-height-rule:exactly;font-family:roboto,'helvetica neue',helvetica,arial,sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#2E3440">Thanks for signing up,</h3></td>
     </tr>
     <tr>
