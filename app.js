@@ -17,13 +17,16 @@ app.use(function (req, res, next) {
 
 async function mainMail(name, email,) {
   const transporter = await nodeMail.createTransport({
-    host: "talojobs.com",
+    host: "mail.privateemail.com",
     port: 465,
-    secure: true,
+    secure: true, // use SSL
     auth: {
       user: process.env.USER_EMAIL,
-      pass: "@?J3v9R9gWLNkwH",
+      pass: process.env.PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+     }
   });
   const mailOption = {
     from: process.env.USER_EMAIL,
@@ -202,7 +205,7 @@ app.get("/", (req, res) => {
   res.send("<h1>hello talo edit</h1>");
 });
 mongoose
-  .connect(process.env.Database_URL, {
+  .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
   })
   .then(() => {
@@ -213,4 +216,4 @@ mongoose
   });
 
 
-app.listen(3000, () => console.log("Server is running!"));
+app.listen(3000, () => console.log("Server is running"));
