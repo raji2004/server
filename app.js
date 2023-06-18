@@ -17,12 +17,12 @@ app.use(function (req, res, next) {
 
 async function mainMail(name, email,) {
   const transporter = await nodeMail.createTransport({
-    host: "smtp.gmail.com",
+    host: "noreply@talojobs.com",
     port: 465,
     secure: true,
     auth: {
       user: process.env.USER_EMAIL,
-      pass: process.env.PASS,
+      pass: "@?J3v9R9gWLNkwH",
     },
   });
   const mailOption = {
