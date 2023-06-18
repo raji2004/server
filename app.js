@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 
 async function mainMail(name, email,) {
   const transporter = await nodeMail.createTransport({
-    host: "noreply@talojobs.com",
+    host: "talojobs.com",
     port: 465,
     secure: true,
     auth: {
