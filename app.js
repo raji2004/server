@@ -5,10 +5,12 @@ const mongoose = require("mongoose");
 const nodeMail = require("nodemailer");
 // const { contact } = require("./contact");
 const User = require('./user')
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(function (req, res, next) {
   //Enabling CORS
