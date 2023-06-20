@@ -201,6 +201,11 @@ app.post("/", async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+app.put('/',async(req,res)=>{
+  const { fname, lname, email, number } = req.body;
+  const name = fname + " " + lname;
+ return await mainMail(name,email)
+})
 app.get("/", (req, res) => {
   res.send("<h1>hello talo edit</h1>");
 });
