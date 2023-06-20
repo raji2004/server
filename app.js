@@ -193,7 +193,7 @@ app.post("/", async (req, res) => {
     console.log(req.body)
     const user = await new User({ FirstName: fname, LastName: lname, Phone_Number: number, Email: email }).save()
     const name = fname + " " + lname;
-    await mainMail(name, email);
+    mainMail(name, email);
 
     res.send(`user ${user.FirstName} has signed up successfully`);
   } catch (error) {
